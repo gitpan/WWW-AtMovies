@@ -1,5 +1,5 @@
 ---
-abstract: 'The great new WWW::AtMovies!'
+abstract: 'retrieves movie information from www.atmovies.com.tw'
 author:
   - 'Alec Chen <alec@cpan.org>'
 build_requires:
@@ -25,4 +25,4 @@ requires:
   WWW::Mechanize: 0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.01
+version: 0.02
