@@ -9,6 +9,7 @@ use HTML::TokeParser::Simple;
 
 has 'title'         => ( is => 'rw', isa => 'Str' );
 has 'chinese_title' => ( is => 'rw', isa => 'Str' );
+has 'url'           => ( is => 'rw', isa => 'Str' );
 has 'crit'          => ( is => 'rw', isa => 'Str' );
 has 'imdb_code'     => ( is => 'rw', isa => 'Num' );
 has 'status'        => ( is => 'rw', isa => 'Num' );
@@ -19,11 +20,11 @@ WWW::AtMovies - retrieves movie information from www.atmovies.com.tw
 
 =head1 VERSION
 
-Version 0.02
+Version 0.03
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 =head1 SYNOPSIS
@@ -35,6 +36,7 @@ our $VERSION = '0.02';
 	print $foo->title, "\n";
 	print $foo->chinese_title, "\n";
 	print $foo->imdb_code, "\n";
+	print $foo->url, "\n";
     }
 
 =head1 FUNCTIONS
@@ -70,6 +72,7 @@ sub _init {
 	return;
     }
     $mech->get($result_link->url_abs);
+    $self->url($mech->uri->as_string);
 
     ### movie page
     my $imdb_url = $mech->find_link( url_regex => qr/imdb/ )->url_abs;
